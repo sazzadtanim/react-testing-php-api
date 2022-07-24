@@ -36,8 +36,14 @@
     transform: rotate(360deg);
   }
 }
-
 .products__container{
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+@media screen and (min-width: 480px) {
+  .products__container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
