@@ -19,8 +19,6 @@ function App() {
   // sazzadNote: if data is object convert OBJECT TO ARRAY BY Object.entries()
 
   // ------------------------------------------------------------
-  console.log(products);
-  console.log(typeof products);
   const showProducts = Object.entries(products).map((prod) => (
     <Product key={prod[1].id} name={prod[1].name} address={prod[1].address} />
   ));
