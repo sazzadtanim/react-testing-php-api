@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import Cart from "./pages/Cart";
 import Product from "./Product";
+import Products from "./pages/Products";
 
 function App() {
   const [products, setProducts] = useState(() => []);
+  const [cart, setCart] = useState(() => []);
+  const [page, setPage] = useState("products");
 
   useEffect(() => {
     fetch("https://showkhinstore.com/myphp/myphp.php")
@@ -19,19 +23,36 @@ function App() {
   // sazzadNote: if data is object convert OBJECT TO ARRAY BY Object.entries()
 
   // ------------------------------------------------------------
+
+  const addToCart = () => {
+    console.log("inside cart");
+  };
+
   const showProducts = Object.entries(products).map((prod) => (
-    <Product key={prod[1].id} name={prod[1].name} address={prod[1].address} />
+    <Product
+      key={prod[1].id}
+      id={prod[1].id}
+      name={prod[1].name}
+      address={prod[1].address}
+      addToCart={addToCart}
+    />
   ));
+
+  console.log(cart);
 
   return (
     <div className="App">
-        <h1>All products</h1>
-      <div className="products__container">
-        {showProducts}
+      <div className="header">
+        <button onClick={() => setPage("product_page")}>Products</button>
+        <button onClick={() => setPage("cart_page")}>Cart</button>
       </div>
+      {page === "cart_page" ? (
+        <Cart />
+      ) : (
+        <Products showProducts={showProducts} />
+      )}
     </div>
   );
 }
 
-// products.map(prod=>(<Product name={prod.name} address={prod.address}/>))
 export default App;
