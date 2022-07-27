@@ -19,9 +19,10 @@ function App() {
   // --------------Show Products-------------
   // todo: solve .map is not a function
   //? .map not working if the array is null or undefined
-  // sazzadNote: check if the data is an array or not by typeof()
+  // sazzadNote: check if the data is an array or not by Array.isArray()
   // sazzadNote: if data is object convert OBJECT TO ARRAY BY Object.entries()
-
+  // console.log(Array.isArray(products));
+  // console.log(products);
   // ------------------------------------------------------------
 
   const addToCart = () => {
